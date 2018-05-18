@@ -1,0 +1,28 @@
+
+## load external properties
+#load:
+#  properties: ${user.home}/config/my-application.properties
+
+datasource:
+  db:
+    username: postgres
+    password: postgres.12qwaszx
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
+    driver: org.postgresql.Driver
+    properties:
+        hibernate.dialect: org.hibernate.dialect.H2Dialect
+        hibernate.show_sql: true
+        hibernate.generate_statistics: false
+        hibernate.hbm2ddl.auto: update # validates schema when service is started
+
+#ebean:
+#  docstore:
+#    url: http://127.0.0.1:9200
+#    active: true
+#  migration:
+#   run: true
+
+
+
+
+
