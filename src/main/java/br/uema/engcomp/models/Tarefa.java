@@ -5,28 +5,28 @@ import java.util.Date;
 
 @Entity
 @Table(name = "tarefa", schema = "agenda")
-public class Tarefa {
+public class Tarefa extends EntityBase{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
     @Basic(optional = false)
-    @Column(name = "Data", nullable = false)
+    @Column(name = "data", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date data;
     @Basic(optional = false)
-    @Column(name = "Descricao", nullable = false, length = 30)
+    @Column(name = "descricao", nullable = false, length = 30)
     private String descricao;
-    @JoinColumn(name = "id_Usuario", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Usuario idUsuario;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

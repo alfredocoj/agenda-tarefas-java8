@@ -5,26 +5,26 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "usuario", schema = "agenda")
-public class Usuario {
+public class Usuario extends EntityBase{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
     @Basic(optional = false)
-    @Column(name = "Nome", nullable = false, length = 10)
+    @Column(name = "nome", nullable = false, length = 10)
     private String nome;
     @Basic(optional = false)
-    @Column(name = "Senha", nullable = false, length = 6)
+    @Column(name = "senha", nullable = false, length = 6)
     private String senha;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private Collection<Tarefa> tarefaCollection;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

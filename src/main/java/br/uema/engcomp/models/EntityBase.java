@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
 import javax.validation.ConstraintViolation;
 import javax.validation.ValidationException;
 import java.sql.Timestamp;
@@ -19,6 +20,7 @@ import java.util.Set;
 
 @MappedSuperclass
 public class EntityBase extends Model {
+    @Version
     protected Long version;
 
     @WhenCreated
@@ -57,12 +59,16 @@ public class EntityBase extends Model {
     }
 
     protected void validate() throws ValidationException {
-        Set<ConstraintViolation<EntityBase>> validator = ValidatorEntity.validate(this);
+        try {
+            Set<ConstraintViolation<EntityBase>> validator = ValidatorEntity.validate(this);
 
-        if (!validator.isEmpty()) {
-            ConstraintViolation<EntityBase> error = validator.iterator().next();
-            String campo = error.getPropertyPath().toString();
-            throw new ValidationException(campo.concat(" - ").concat(error.getMessage()));
+            if (!validator.isEmpty()) {
+                ConstraintViolation<EntityBase> error = validator.iterator().next();
+                String campo = error.getPropertyPath().toString();
+                throw new ValidationException(campo.concat(" - ").concat(error.getMessage()));
+            }
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 
