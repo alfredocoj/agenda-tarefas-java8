@@ -9,14 +9,17 @@ public class Usuario extends EntityBase{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_usuario", nullable = false)
     private Integer id;
+
     @Basic(optional = false)
     @Column(name = "nome", nullable = false, length = 10)
     private String nome;
+
     @Basic(optional = false)
     @Column(name = "senha", nullable = false, length = 6)
     private String senha;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private Collection<Tarefa> tarefaCollection;
 

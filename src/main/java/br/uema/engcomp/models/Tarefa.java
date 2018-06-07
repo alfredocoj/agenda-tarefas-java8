@@ -9,7 +9,7 @@ public class Tarefa extends EntityBase{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_tarefa", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @Column(name = "data", nullable = false)
@@ -18,7 +18,7 @@ public class Tarefa extends EntityBase{
     @Basic(optional = false)
     @Column(name = "descricao", nullable = false, length = 30)
     private String descricao;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario", nullable = false)
     @ManyToOne(optional = false)
     private Usuario idUsuario;
 

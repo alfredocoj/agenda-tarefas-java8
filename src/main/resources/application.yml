@@ -10,13 +10,14 @@ datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
     driver: org.postgresql.Driver
     hibernate:
-        ddl-auto: update
+        ddl-auto: create
     properties:
         hibernate.dialect: org.hibernate.dialect.H2Dialect
         hibernate.show_sql: true
         hibernate.generate_statistics: false
         hibernate.hbm2ddl.auto: update # validates schema when service is started
-
+        spring.jpa.show-sql: true
+        spring.jpa.hibernate.ddl-auto: update
 #ebean:
 #  docstore:
 #    url: http://127.0.0.1:9200
